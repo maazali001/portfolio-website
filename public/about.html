@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Portfolio</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #0b182b;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
+            color: #fcfcfc;
+            transition: color 0.3s;
+        }
+
+        nav {
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f9ac05;
+        }
+
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            flex-grow: 1;
+            margin-bottom: 10px;
+        }
+
+        main h2 {
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #0b182b;
+            color: white;
+            width: 100%;
+            transition: background-color 0.3s;
+            margin-top: auto;
+        }
+
+        .dark-mode {
+            background-color: black;
+            color: white;
+        }
+
+        .dark-mode header {
+            background-color: #111827;
+        }
+
+        .dark-mode footer {
+            background-color: #111827;
+        }
+
+        .dark-mode h1 {
+            color: #fcfcfc;
+        }
+
+        button {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .paragraph {
+            text-align: center;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slide 1s forwards;
+            max-width: 600px;
+        }
+
+        @keyframes slide {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Slider Styles */
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            transition: opacity 1s ease;
+        }
+
+        img {
+            width: 96px;
+            height: 96px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            header {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            nav {
+                flex-direction: row;
+            }
+
+            nav a {
+                margin: 0 5px;
+            }
+
+            button {
+                right: 10px;
+                top: 10px;
+            }
+
+            .slider {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>My Portfolio</h1>
+        <button id="theme-toggle">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Toggle Dark Mode"
+                style="width: 24px; height: 24px;" />
+        </button>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>About Me</h2>
+            <p class="paragraph">
+                Hello! I'm Mazz Mahmood Ali, a dedicated developer and student. I have a passion for coding and technology. Currently, I’m enhancing my skills through various projects and freelance work.
+            </p>
+            <p class="paragraph">
+                My expertise lies in frontend development, primarily using HTML, CSS, and JavaScript. I enjoy creating user-friendly and visually appealing web applications. My goal is to continuously learn and grow in this field.
+            </p>
+            <p class="paragraph">
+                Currently, I’m pursuing a diploma in Mechanical Engineering and have completed my intermediate studies. Additionally, I am taking an IT course at Governor House.
+            </p>
+        </section>
+
+        <!-- Image Slider -->
+        <div class="slider">
+            <div class="slides" id="slides">
+                <div class="slide">
+                    <img src="https://img.icons8.com/color/96/000000/typescript.png" alt="TypeScript">
+                </div>
+                <div class="slide">
+                    <img src="https://img.icons8.com/color/96/000000/python.png" alt="Python">
+                </div>
+                <div class="slide">
+                    <img src="https://img.icons8.com/color/96/000000/react-native.png" alt="ReactJS">
+                </div>
+                <div class="slide">
+                    <img src="https://img.icons8.com/color/96/000000/javascript.png" alt="JavaScript">
+                </div>
+                <div class="slide">
+                    <img src="https://img.icons8.com/color/96/000000/html-5.png" alt="HTML">
+                </div>
+                <div class="slide">
+                    <img src="https://img.icons8.com/color/96/000000/css3.png" alt="CSS">
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Mazz Ali</p>
+    </footer>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Check localStorage for dark mode preference
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            body.classList.add('dark-mode');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('dark-mode', 'enabled');
+                themeToggle.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Light Mode Icon" style="width: 24px; height: 24px;"/>';
+            } else {
+                localStorage.setItem('dark-mode', 'disabled');
+                themeToggle.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Dark Mode Icon" style="width: 24px; height: 24px;"/>';
+            }
+        });
+
+        // Trigger paragraph animation on page load
+        window.onload = () => {
+            const paragraphs = document.querySelectorAll('.paragraph');
+            paragraphs.forEach((p, index) => {
+                p.style.animation = `slide 1s forwards ${index * 0.5}s`;
+            });
+        };
+
+        // Automatic Image Slider Functionality
+        let currentIndex = 0;
+        const slides = document.getElementById('slides');
+        const totalSlides = slides.children.length;
+
+        function updateSlider() {
+            const offset = -currentIndex * 100;
+            slides.style.transform = `translateX(${offset}%)`;
+        }
+
+        function autoSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+        }
+
+        setInterval(autoSlide, 3000);
+    </script>
+</body>
+
+</html>

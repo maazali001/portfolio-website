@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Portfolio</title>
+    <style>
+        /* Your existing styles remain unchanged */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: #0b182b;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        nav {
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f9ac05;
+        }
+
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            flex-grow: 1;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #0b182b;
+            color: white;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        form {
+            color: white;
+            max-width: 600px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #080808;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input,
+        textarea {
+            color: #000000;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #1f0909;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 16px;
+            background-color: #ffffff;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #f9f0f0;
+            color: rgb(5, 5, 5);
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #f2a500;
+        }
+
+        .dark-mode {
+            background-color: black;
+            color: white;
+        }
+
+        .dark-mode header {
+            background-color: #111827;
+        }
+
+        .dark-mode footer {
+            background-color: #111827;
+        }
+
+        .dark-mode form {
+            background-color: #010101;
+        }
+
+        .dark-mode input,
+        .dark-mode textarea {
+            background-color: #333333;
+            color: #ffffff;
+            border: 1px solid #666;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            nav {
+                flex-direction: row;
+            }
+
+            nav a {
+                margin: 0 5px;
+            }
+        }
+
+        button#theme-toggle {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>My Portfolio</h1>
+        <button id="theme-toggle">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Toggle Dark Mode" style="width: 24px; height: 24px;" />
+        </button>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Contact Me</h2>
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 Mazz Ali</p>
+    </footer>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            body.classList.add('dark-mode');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('dark-mode', 'enabled');
+                themeToggle.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Light Mode Icon" style="width: 24px; height: 24px;"/>';
+            } else {
+                localStorage.removeItem('dark-mode');
+                themeToggle.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Dark Mode Icon" style="width: 24px; height: 24px;"/>';
+            }
+        });
+
+        // Handling form submission
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            const formData = new FormData(this);
+            const formObject = Object.fromEntries(formData.entries());
+
+            fetch('http://localhost:3000/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formObject),
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Message sent successfully!');
+                        this.reset(); // Reset the form
+                    } else {
+                        alert('Failed to send message.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while sending the message.');
+                });
+        });
+    </script>
+</body>
+
+</html>

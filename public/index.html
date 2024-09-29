@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Portfolio</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #0b182b;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
+            color: #fcfcfc;
+            transition: color 0.3s;
+        }
+
+        nav {
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f9ac05;
+        }
+
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            flex-grow: 1;
+            margin-bottom: 10px;
+        }
+
+        main h2 {
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #0b182b;
+            color: white;
+            width: 100%;
+            transition: background-color 0.3s;
+            margin-top: auto;
+        }
+
+        .dark-mode {
+            background-color: black;
+            color: white;
+        }
+
+        .dark-mode header {
+            background-color: #111827;
+        }
+
+        .dark-mode footer {
+            background-color: #111827;
+        }
+
+        .dark-mode h1 {
+            color: #fcfcfc;
+        }
+
+        button {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .paragraph {
+            text-align: center;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slide 1s forwards;
+            max-width: 600px;
+        }
+
+        @keyframes slide {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .image-slider {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            height: 100px;
+            margin: 10px 0;
+        }
+
+        .image-slider img {
+            width: 50px;
+            margin: 0 10px;
+            opacity: 0;
+            transition: opacity 0.5s;
+            position: absolute;
+        }
+
+        .image-slider img.active {
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            nav {
+                flex-direction: row;
+            }
+
+            nav a {
+                margin: 0 5px;
+            }
+
+            button {
+                right: 10px;
+                top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>My Portfolio</h1>
+        <button id="theme-toggle">
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Toggle Dark Mode" style="width: 24px; height: 24px;" />
+        </button>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Welcome to My Portfolio</h2>
+            <p class="paragraph">I am a frontend web developer with a passion for creating engaging and
+                user-friendly websites. Currently, I am freelancing on Upwork, where I work on diverse
+                projects that allow me to showcase my skills in HTML, CSS, and JavaScript.
+                My goal is to deliver high-quality solutions that not only meet client needs but also enhance the
+                overall user experience.
+            </p>
+        </section>
+        <div class="image-slider">
+            <img src="https://img.icons8.com/color/50/000000/html-5.png" alt="HTML Icon" class="active" />
+            <img src="https://img.icons8.com/color/50/000000/css3.png" alt="CSS Icon" />
+            <img src="https://img.icons8.com/color/50/000000/javascript.png" alt="JavaScript Icon" />
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Mazz Ali</p>
+    </footer>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Check localStorage for dark mode preference
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            body.classList.add('dark-mode');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            // Save the user's preference in localStorage
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('dark-mode', 'enabled');
+                themeToggle.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Light Mode Icon" style="width: 24px; height: 24px;"/>';
+            } else {
+                localStorage.removeItem('dark-mode');
+                themeToggle.innerHTML = '<img src="https://img.icons8.com/ios-filled/50/ffffff/sun--v1.png" alt="Dark Mode Icon" style="width: 24px; height: 24px;"/>';
+            }
+        });
+
+        // Trigger paragraph animation on page load
+        window.onload = () => {
+            document.querySelector('.paragraph').style.animation = 'slide 1s forwards';
+        };
+
+        // Image Slider
+        const images = document.querySelectorAll('.image-slider img');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        setInterval(showNextImage, 2000);
+    </script>
+</body>
+
+</html>
