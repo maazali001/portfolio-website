@@ -243,13 +243,14 @@
                 const formObject = Object.fromEntries(formData.entries());
     
                 // Update the fetch URL to your Vercel backend URL
-                fetch('https://portfolio-website-9z14vqzib-mazz-alis-projects.vercel.app/send', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formObject),
-                })
+                fetch('https://your-backend-name.vercel.app/send', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formObject),
+})
+
                 .then(response => {
                     if (response.ok) {
                         alert('Message sent successfully!');

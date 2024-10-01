@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000; // Use environment port or default to 300
 
 // Use CORS middleware and allow only your frontend
 app.use(cors({
-    origin: 'https://portfolio-website-nu-smoky-31.vercel.app' // Allow only your frontend
+    origin: ['https://portfolio-website-9z14vqzib-mazz-alis-projects.vercel.app', 'https://portfolio-website-q8c7vns7c-mazz-alis-projects.vercel.app'] // Add all your frontend URLs
 }));
 
 // Middleware to parse URL-encoded and JSON bodies
