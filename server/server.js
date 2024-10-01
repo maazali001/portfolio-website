@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware to parse URL-encoded and JSON bodies
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,11 +39,11 @@ app.post('/send', (req, res) => {
             return res.status(500).send('Error sending email');
         }
         console.log('Email sent: ' + info.response);
-        res.json({ message: 'Message sent successfully!' }); // Respond with success
+        res.json({ message: 'Message sent successfully!' });
     });
 });
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
