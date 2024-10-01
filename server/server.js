@@ -9,8 +9,9 @@ const PORT = process.env.PORT || 3000; // Use environment port or default to 300
 
 // Use CORS middleware and allow only your frontend
 app.use(cors({
-    origin: ['https://portfolio-website-9z14vqzib-mazz-alis-projects.vercel.app', 'https://portfolio-website-q8c7vns7c-mazz-alis-projects.vercel.app'] // Add all your frontend URLs
+    origin: 'https://portfolio-website-8qrems2hq-mazz-alis-projects.vercel.app' // Aapka frontend URL
 }));
+
 
 // Middleware to parse URL-encoded and JSON bodies
 app.use(bodyParser.urlencoded({ extended: false }));

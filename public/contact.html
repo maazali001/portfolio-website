@@ -192,7 +192,7 @@
     </header>
     <main>
         <h2>Contact Me</h2>
-        <form id="contact-form" action="https://your-backend-name.vercel.app/send" method="post">
+        <form id="contact-form" action="https://portfolio-website-8qrems2hq-mazz-alis-projects.vercel.app/send" method="post">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" required>
@@ -243,7 +243,8 @@
                 const formObject = Object.fromEntries(formData.entries());
     
                 // Update the fetch URL to your Vercel backend URL
-                fetch('https://your-backend-name.vercel.app/send', {
+                fetch('https://portfolio-website-8qrems2hq-mazz-alis-projects.vercel.app/send', {
+
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
