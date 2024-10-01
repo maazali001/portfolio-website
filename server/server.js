@@ -2,35 +2,39 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const path = require('path');
-const cors = require('cors');
-require('dotenv').config();
+const cors = require('cors'); // Import the CORS package
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // Use environment port or default to 3000
 
-// Middleware
-app.use(cors()); // Enable CORS
+// Use CORS middleware and allow only your frontend
+app.use(cors({
+    origin: 'https://portfolio-website-nu-smoky-31.vercel.app' // Allow only your frontend
+}));
+
+// Middleware to parse URL-encoded and JSON bodies
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// Serve static files from the public directory
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Route for sending email
 app.post('/send', (req, res) => {
     const { name, email, message } = req.body;
-    console.log(req.body); // Check the incoming data
 
     // Nodemailer setup
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: process.env.EMAIL_USER, // Use environment variable
-            pass: process.env.EMAIL_PASS  // Use environment variable
+            user: 'alimazz272@gmail.com', // Replace with your email
+            pass: 'hlqr whwk qmgo mwhw' // Replace with your email password or app password
         }
     });
 
     const mailOptions = {
         from: email,
-        to: process.env.EMAIL_USER, // Use environment variable
+        to: 'alimazz272@gmail.com', // Replace with the receiver's email
         subject: `Message from ${name}`,
         text: message
     };
