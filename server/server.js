@@ -1,23 +1,17 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const path = require('path');
-const cors = require('cors'); // Import the CORS package
 
 const app = express();
-const PORT = process.env.PORT || 3000; // Use environment port or default to 3000
+const PORT = process.env.PORT || 3000;
 
-// Use CORS middleware and allow only your frontend
+// Configure CORS to allow requests from your frontend domain
 app.use(cors({
-    origin: [
-        'https://portfolio-website-8qrems2hq-mazz-alis-projects.vercel.app', // Aapka frontend URL
-        'https://portfolio-website-m73aidrm8-mazz-alis-projects.vercel.app' // Dusra frontend URL agar hai
-    ],
-    methods: ['GET', 'POST'], // Allow specific methods
-    credentials: true // Agar aapko cookies ya credentials ki zarurat hai to
+    origin: 'https://portfolio-website-fwbbznn6t-mazz-alis-projects.vercel.app', // Update with your frontend URL
+    methods: ['GET', 'POST'], // Allowed HTTP methods
 }));
-
-
 
 // Middleware to parse URL-encoded and JSON bodies
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,7 +35,7 @@ app.post('/send', (req, res) => {
 
     const mailOptions = {
         from: email,
-        to: 'alimazz272@gmail.com', // Replace with the receiver's email
+        to: 'alimazz272@gmail.com', // Replace with your email
         subject: `Message from ${name}`,
         text: message
     };
