@@ -7,10 +7,14 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Configure CORS to allow requests from your frontend domain
+// Add the origin of your frontend deployment
 app.use(cors({
-    origin: 'https://portfolio-website-fwbbznn6t-mazz-alis-projects.vercel.app', // Update with your frontend URL
-    methods: ['GET', 'POST'], // Allowed HTTP methods
+    origin: [
+        'https://portfolio-website-ob15ngbb4-mazz-alis-projects.vercel.app', // New frontend URL
+        'https://portfolio-website-fwbbznn6t-mazz-alis-projects.vercel.app', // Previous frontend
+        'http://127.0.0.1:5500'  // Localhost for development
+    ],
+    methods: ['GET', 'POST'], // Allowed methods
 }));
 
 // Middleware to parse URL-encoded and JSON bodies
@@ -29,7 +33,7 @@ app.post('/send', (req, res) => {
         service: 'gmail',
         auth: {
             user: 'alimazz272@gmail.com', // Replace with your email
-            pass: 'hlqr whwk qmgo mwhw' // Replace with your email password or app password
+            pass: 'hlqr whwk qmgo mwhw'   // Replace with your app password or email password
         }
     });
 
