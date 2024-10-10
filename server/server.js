@@ -7,12 +7,12 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Add the origin of your frontend deployment
+// CORS policy allowing local and deployed frontend URLs
 app.use(cors({
     origin: [
-        'https://portfolio-website-ob15ngbb4-mazz-alis-projects.vercel.app', // New frontend URL
-        'https://portfolio-website-fwbbznn6t-mazz-alis-projects.vercel.app', // Previous frontend
-        'http://127.0.0.1:5500'  // Localhost for development
+        'https://portfolio-website-jc7e5ipdl-mazz-alis-projects.vercel.app', // New frontend URL
+        'https://portfolio-website-ob15ngbb4-mazz-alis-projects.vercel.app', // Previous frontend
+        'http://127.0.0.1:5500'  // Allow localhost for development
     ],
     methods: ['GET', 'POST'], // Allowed methods
 }));
@@ -28,7 +28,10 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.post('/send', (req, res) => {
     const { name, email, message } = req.body;
 
-    // Nodemailer setup
+    // Log the received form data to the console for debugging
+    console.log('Received form data:', { name, email, message });
+
+    // Nodemailer setup for sending emails
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
